@@ -33,6 +33,7 @@ Route::namespace('Admin')->middleware(['auth'])->prefix('admin')->name('admin.')
 
 Route::get('/catalog/{category?}', 'ShopController@category')->name('catalog');
 Route::get('/catalog/{category}/{product}', 'ShopController@product')->name('product');
+Route::get('/cart', 'ShopController@addToCart')->name('cart');
 
 //Route::get('/cart', 'CartController@index');
 //Route::post('/cart', 'CartController@add');

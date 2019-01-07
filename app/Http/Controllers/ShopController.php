@@ -14,16 +14,20 @@ class ShopController extends Controller
         if ($category->id){
             $products = Product::query()->where('cat_id', $category->id)->paginate(12);
         }else{
-            $products = [];
+            $products = Product::paginate(12);
         }
         return view('shop.category', compact('products'));
     }
 
     public function product(Category $category, Product $product){
-        if ($product->category()->id !== $category->id){
+        if ($product->category->id !== $category->id){
             throw new NotFoundHttpException();
         }
         return view('shop.product', ['product'=>$product]);
+    }
+
+    public function addToCart(Request $request){
+        return view('cart.cart');
     }
 
 }
