@@ -144,7 +144,7 @@
 
                 <div class="header-wrapicon2">
                     <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">0</span>
+                    <span class="header-icons-noti">{{$cart_count}}</span>
 
                     <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
@@ -430,31 +430,8 @@
                 Categories
             </h4>
 
-            <ul>
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Men
-                    </a>
-                </li>
+            @include('partials.sidemenu')
 
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Women
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Dresses
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Sunglasses
-                    </a>
-                </li>
-            </ul>
         </div>
 
         <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">

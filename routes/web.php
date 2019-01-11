@@ -32,6 +32,7 @@ Route::namespace('Admin')->middleware(['auth'])->prefix('admin')->name('admin.')
 
 
 Route::get('/catalog/{category?}', 'ShopController@category')->name('catalog');
+Route::get('/run', 'ShopController@run');
 Route::get('/catalog/{category}/{product}', 'ShopController@product')->name('product');
 
 Route::get('/cart', 'CartController@index')->name('cart');
