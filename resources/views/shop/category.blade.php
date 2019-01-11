@@ -1,15 +1,26 @@
 @extends('layouts.app')
 @section('content')
-<!-- Title Page -->
-<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url({{asset('images/heading-pages-02.jpg')}});">
-    <h2 class="l-text2 t-center">
-        Women
-    </h2>
-    <p class="m-text13 t-center">
-        New Arrivals Women Collection 2018
-    </p>
-</section>
+    <!-- breadcrumb -->
+    <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
+        <a href="index.html" class="s-text16">
+            Home
+            <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+        </a>
 
+        <a href="product.html" class="s-text16">
+            Women
+            <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+        </a>
+
+        <a href="#" class="s-text16">
+            T-Shirt
+            <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+        </a>
+
+        <span class="s-text17">
+			Boxy T-Shirt with Roll Sleeve Detail
+		</span>
+    </div>
 <!-- Content page -->
 <section class="bgwhite p-t-55 p-b-65">
     <div class="container">
@@ -182,7 +193,7 @@
                                         <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
                                     </a>
 
-                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                    <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{$product->id}}">
                                         <!-- Button -->
                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                             Add to Cart

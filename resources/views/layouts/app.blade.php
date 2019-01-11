@@ -61,32 +61,29 @@
                         @if(\Illuminate\Support\Facades\Auth::check())
 				        	<span class="topbar-email">
 						        {{ Auth::user()->email }}
+                                &nbsp;
 					        </span>
                         @endif
 
                 <div class="topbar-language rs1-select2">
-                    <ul class="main_menu">
+
                         @if(\Illuminate\Support\Facades\Auth::check())
-                                <li><a href="{{ route('logout') }}"
+                                <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                document.getElementById('logout-form').submit();">
-                                        <i class="zmdi zmdi-power"></i>Выход</a></li>
+                                         Выход</a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     {{ csrf_field() }}
                                 </form>
 
                         @else
-                            <li>
-                                Вход | Регистрация
-                                <ul class="sub_menu">
-                                    <li><a href="{{route('login')}}">Вход</a></li>
-                                    <li><a href="{{route('register')}}">Регистрация</a></li>
-                                </ul>
-                            </li>
+
+                                <a href="{{route('login')}}">Вход</a> | <a href="{{route('register')}}">Регистрация</a>
+
                         @endif
 
 
-                    </ul>
+
                     {{--<select class="selection-1" name="time">--}}
                         {{--<option>USD</option>--}}
                         {{--<option>EUR</option>--}}
@@ -97,7 +94,7 @@
 
         <div class="wrap_header">
             <!-- Logo -->
-            <a href="index.html" class="logo">
+            <a href="{{route('index')}}" class="logo">
                 <img src="images/icons/logo.png" alt="IMG-LOGO">
             </a>
 
@@ -115,20 +112,16 @@
                         </li>
 
                         <li>
-                            <a href="#">Shop</a>
+                            <a href="{{route('catalog')}}">Shop</a>
                         </li>
 
                         <li class="sale-noti">
-                            <a href="#">Cart</a>
+                            <a href="{{route('cart')}}">Cart</a>
                         </li>
 
                         <li>
                             <a href="cart.html">Features</a>
                         </li>
-
-                        {{--<li>--}}
-                            {{--<a href="blog.html">Blog</a>--}}
-                        {{--</li>--}}
 
                         <li>
                             <a href="about.html">About</a>
@@ -616,10 +609,21 @@
 <!--===============================================================================================-->
 <script type="text/javascript" src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
 <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     $('.block2-btn-addcart').each(function(){
         var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
         $(this).on('click', function(){
-            swal(nameProduct, "is added to cart !", "success");
+            $.ajax({
+                method: 'POST',
+                url: '/cart_add',
+                data: {id: $(this).data('id')}
+            });
+            swal(nameProduct, "Добавлен в корзину !", "success");
         });
     });
 
