@@ -40,9 +40,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|min:20'
+        ]);
         $category = new Category($request->all());
         $category->slug = str_slug($category->name);
         $category->save();
+        $request->session()->flash('status', 'Категория добавлена');
+
         return redirect(route('admin.category.index'));
     }
 

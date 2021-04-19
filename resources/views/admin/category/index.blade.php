@@ -4,6 +4,12 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <div class="col-md-12">
                         <!-- DATA TABLE -->
                         <h3 class="title-5 m-b-35">Категории</h3>

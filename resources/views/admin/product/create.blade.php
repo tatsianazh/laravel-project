@@ -4,6 +4,11 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{$error}}
+                        </div>
+                    @endforeach
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">

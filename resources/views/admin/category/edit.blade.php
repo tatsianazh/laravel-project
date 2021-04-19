@@ -10,6 +10,12 @@
                                 <strong>Создание категории</strong>
                             </div>
                             <div class="card-body card-block">
+                                @foreach($errors->all() as $error)
+                                    <div class="alert alert-danger">
+                                        {{$error}}
+                                    </div>
+                                @endforeach
+
                                 <form action="@if($category->id!==null) {{route('admin.category.update', @compact('category'))}}@else {{route('admin.category.store')}} @endif" method="post" class="form-horizontal" novalidate="novalidate">
                                     @if(isset($category->id))
                                     <input name="_method" value="PUT" type="hidden">
